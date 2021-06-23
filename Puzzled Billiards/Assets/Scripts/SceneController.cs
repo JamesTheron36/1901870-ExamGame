@@ -47,6 +47,10 @@ public class SceneController : Singleton<SceneController>
     {
         SceneManager.LoadScene("Course_4");
     }
+    public void LoadLevelSelect()
+    {
+        SceneManager.LoadScene("LevelSelector");
+    }
     public void LoadCourse5()
     {
         SceneManager.LoadScene("Course_5");

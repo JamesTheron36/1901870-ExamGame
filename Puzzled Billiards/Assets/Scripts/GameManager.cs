@@ -151,6 +151,8 @@ public class GameManager : Singleton<GameManager>
 
     public void ClearStage()
     {
+        Debug.Log(stars + "stars");
+        StarManager.levels[stage - 1] = stars;
         clear = true;
         clearMenu.SetActive(true);
         SetStars();

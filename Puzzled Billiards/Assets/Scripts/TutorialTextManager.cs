@@ -29,7 +29,7 @@ public class TutorialTextManager : MonoBehaviour
                 ShowSwitchBallTut();
                 break;
             case 4:
-                DisableTut();
+                ShowRestartTut();
                 break;
         }
     }

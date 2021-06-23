@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1495783530}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: LoadCourse1
+        m_MethodName: LoadLevelSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
