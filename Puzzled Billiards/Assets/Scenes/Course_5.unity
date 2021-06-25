@@ -637,6 +637,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 276d2d9c572e6f244acd7c3b73e937a0, type: 2}
+    - target: {fileID: -1168787848407415258, guid: ae0c674986f9ef141a2c5014bf16ed9f, type: 3}
+      propertyPath: m_TagString
+      value: phase
+      objectReference: {fileID: 0}
     - target: {fileID: -678588488315902003, guid: ae0c674986f9ef141a2c5014bf16ed9f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -810,7 +814,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 7.69
+  m_Radius: 7.99
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -1831,9 +1835,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   holePoint: {fileID: 1432896209}
-  holeForcePower: 60
   bouncerMod: 0
-  maxVelocity: 0
   ff: {fileID: 0}
   maxPower: 200
 --- !u!1 &1371594283
@@ -2327,7 +2329,7 @@ GameObject:
   - component: {fileID: 1515821665}
   m_Layer: 0
   m_Name: PhaseWall1
-  m_TagString: Untagged
+  m_TagString: phase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

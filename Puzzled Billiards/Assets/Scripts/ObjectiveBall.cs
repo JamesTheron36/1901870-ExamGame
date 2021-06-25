@@ -10,9 +10,7 @@ public class ObjectiveBall : MonoBehaviour
     [SerializeField] float lineDistance = 10f;
     [SerializeField] LayerMask mask;
     [SerializeField] Transform holePoint;
-    [SerializeField] float holeForcePower = 1f;
     [SerializeField] float bouncerMod;
-    [SerializeField] float maxVelocity;
     [SerializeField] ForceField ff;
 
     bool clicked;
@@ -23,8 +21,7 @@ public class ObjectiveBall : MonoBehaviour
     LineRenderer lr;
     public float maxPower = 100f;
     bool overHole;
-    float originalDrag;
-    Vector3 originalGravity;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +29,7 @@ public class ObjectiveBall : MonoBehaviour
         clicked = false;
         rb = GetComponent<Rigidbody>();
         lr = GetComponent<LineRenderer>();
-        originalDrag = rb.drag;
-        originalGravity = Physics.gravity;
+        
         
     }
 
@@ -107,18 +103,15 @@ public class ObjectiveBall : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        if(col.tag == "oob")
-        {
-            SceneController.instance.ResetCurrentScene();
-        }
-        else if (col.tag == "hole")
+        
+        if (col.tag == "hole")
         {
             overHole = true;
             rb.constraints = RigidbodyConstraints.None;
             Debug.Log("in field");
             Vector3 dir = holePoint.position - transform.position;
             dir = dir.normalized;
-            rb.AddForce(dir*holeForcePower);
+            rb.velocity = dir * lastVelocity.magnitude;
         }
         
         
@@ -161,7 +154,10 @@ public class ObjectiveBall : MonoBehaviour
         {
             rb.velocity = ff.direction * ff.magnitude;
         }
-
+        if (col.tag == "oob")
+        {
+            SceneController.instance.ResetCurrentScene();
+        }
     }
 
     public void Hit(float power, Vector3 direction)

@@ -23,7 +23,7 @@ public class TutorialTextManager : MonoBehaviour
                 ShowObjBallTut();
                 break;
             case 2:
-                ShowStickyBallTut();
+                DisableTut();
                 break;
             case 3:
                 ShowSwitchBallTut();
@@ -88,9 +88,13 @@ public class TutorialTextManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             clicks++;
-            if(stage == 1)
+            if (stage == 1)
             {
                 ShowPhaseBallTut();
+            }
+            else if (stage == 2 && clicks == 1)
+            {
+                ShowStickyBallTut();
             }
             else
             {

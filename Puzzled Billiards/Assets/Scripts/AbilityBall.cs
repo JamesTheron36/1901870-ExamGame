@@ -83,7 +83,15 @@ public class AbilityBall : MonoBehaviour
             //Debug.Log(point);
             //Vector3 force = direction * maxPower;
 
-            if(Input.GetMouseButtonDown(1) && clicked == false)
+            if(Input.GetMouseButtonDown(1) && clicked == false && stuck == false)
+            {
+                SwitchAbility();
+            }
+            if(GameManager.instance.blueRem == 0 && GetAbility() == 0 && GameManager.instance.orangeRem > 0)
+            {
+                SwitchAbility();
+            }
+            if (GameManager.instance.blueRem > 0 && GetAbility() == 1 && GameManager.instance.orangeRem == 0)
             {
                 SwitchAbility();
             }
@@ -93,11 +101,12 @@ public class AbilityBall : MonoBehaviour
             {
                 if(GetAbility() == 0 && GameManager.instance.blueRem > 0)
                 {
+                    SoundManager.instance.PlayHitSound();
                     Hit(power, direction);
                 }
                 else if(GetAbility() == 1 && GameManager.instance.orangeRem > 0)
                 {
-                    
+                    SoundManager.instance.PlayHitSound();
                     Hit(power, direction);
                     if (stuck)
                     {
@@ -215,12 +224,18 @@ public class AbilityBall : MonoBehaviour
         switch (num)
         {
             case 0:
-                ability = (Ability) 1;
-                SetMaterial();
+                if(GameManager.instance.orangeRem > 0)
+                {
+                    ability = (Ability)1;
+                    SetMaterial(); 
+                }
                 break;
             case 1:
-                ability = (Ability) 0;
-                SetMaterial();
+                if(GameManager.instance.blueRem > 0)
+                {
+                    ability = (Ability)0;
+                    SetMaterial();
+                }
                 break;
         }
     }

@@ -136,16 +136,18 @@ public class GameManager : Singleton<GameManager>
     {
         foreach(GameObject wall in phaseWalls)
         {
-            Collider col = wall.GetComponent<MeshCollider>();
-            col.enabled = false;
+            Collider col1 = wall.GetComponent<MeshCollider>();
+            Collider col2 = abilityBall.GetComponent<Collider>();
+            Physics.IgnoreCollision(col1, col2, true);
         }
     }
     public void EnablePhaseWalls()
     {
         foreach (GameObject wall in phaseWalls)
         {
-            Collider col = wall.GetComponent<MeshCollider>();
-            col.enabled = true;
+            Collider col1 = wall.GetComponent<MeshCollider>();
+            Collider col2 = abilityBall.GetComponent<Collider>();
+            Physics.IgnoreCollision(col1, col2, false);
         }
     }
 
